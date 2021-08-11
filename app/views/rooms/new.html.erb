@@ -16,6 +16,15 @@
         <label class='chat-room-form__label' for='chat_room_チャットメンバー'>チャットメンバー</label>
       </div>
       <div class='chat-room-form__field--right'>
+        <select name="room[user_ids][]">
+        <%# name属性.roomキーの中に[user_ids]を含める設定。[]は23行目で記述されたバリュー（user.id）が入る。プルダウンで選択したユーザーが入る %>
+          <option>チャットするユーザーを選択してください</option>
+          <%= User.where.not(id: current_user).each do |user| %>
+          <option value=<%= user.id %>><%= user.name%></option>
+          <% end %>
+        </select>
+        <input name= "room[user_ids][]" type="hidden" value=<%= current_user.id %>>
+        <%# 19行目の記述はプルダウンで選んだユーザーだけが入るため上記では[]の中にカレントユーザー(バリュー）が入るように設定している%>
       </div>
     </div>
     <div class='chat-room-form__field'>
