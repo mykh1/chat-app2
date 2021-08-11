@@ -3,21 +3,21 @@
     <%= link_to current_user.name,edit_user_path(current_user) %>
   </div> 
   <div class="create-room">
-    <a herf="#">チャットを作成する</a>
+    <%= link_to "チャットを作成する", new_room_path %>
   </div>
 </div>
 
 
 
 <div class="rooms">
-  <div class="room"> 
-    <div class="room-name">
-      <a href="#">techroom1</a>
+  <% current_user.rooms.each do |room| %>
+  <%#今ログインしている人（current_user）の(rooms)の中からeachメソッドでチャットルーム名|room|を一つづつ繰り返し取り出す %>
+    <div class="room">
+    <%# クラスはcssを当てるために設定している %>
+      <div class="room-name">
+        <a href="#"><%= room.name %></a>
+        <%# 今ログインしている人の取り出されたチャットルーム名｜room｜がサイドバーに全て表示される %>
+      </div>
     </div>
-  </div>
-  <div class="room"> 
-    <div class="room-name">
-      <a href="#">techroom2</a>
-    </div>
-  </div>
+  <% end %>
 </div>
