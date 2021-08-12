@@ -46,13 +46,14 @@
 </div>
 
 
-<div class="form">
+<%= form_with model: [@room, @message], class: 'form',local: true do |f| %>
+<%# form_withの引数に@room, @messageの2つあるのは、messagesのルーティング（config/routes.rb）がroomsにネスト（親子関係）されているから。 %>
   <div class="form-input">
-    <input class="form-message" placeholder="taype a messasge">
+    <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
     <label class="form-image">
       <span class="image-file">画像</span>
-      <input type="file" class="hibben">
+      <%= f.file_field :image, class: 'hidden' %>
     </label>
   </div>
-  <input class="submit" type="submit" value="送信">
-</div>
+  <%= f.submit '送信', class: 'form-submit' %>
+<% end %>
