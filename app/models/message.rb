@@ -3,7 +3,7 @@ class Message < ApplicationRecord
   # 1つのメッセージは、1つのチャットルームに存在する。
   belongs_to :user
   # 1つのメッセージは、1人のユーザーから送信される。
-  hax_one_attached :image
+  has_one_attached :image
   # has_one_attachedハズ ワン アタッチドメソッド
   # 上記を記述したモデルの各レコードは、それぞれ1つのファイルを添付できる
 
