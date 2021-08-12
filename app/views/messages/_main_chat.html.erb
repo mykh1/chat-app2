@@ -12,37 +12,10 @@
 </div>
 
 <div class="messages">
-  <div class="message">
-    <div class="upper-message">
-      <div class="message-user">
-        Tom
-      </div>
-      <div class="message-date">
-        2020/3/31(Wed) 12:43:30
-      </div>
-    </div>
-    <div class="lower-message">
-      <div class="message-content">
-        おはよう
-      </div>
-    </div>
-  </div>
-
-  <div class="message">
-    <div class="upper-message">
-      <div class="message-user">
-        Tom
-      </div>
-      <div class="message-date">
-        2020/3/31(Wed) 12:47:30
-      </div>
-    </div>
-    <div class="lower-message">
-      <div class="message-content">
-        こんばんは
-      </div>
-    </div>
-  </div>
+  <%= render partial: 'message', collection: @messages %>
+  <%# 部分テンプレート： 'message'(ユーザー名、時刻、メッセージ内容)。@messages(チャットルームで一人のユーザーがした複数のメッセージ)を全て（繰り返し）表示%>
+  <%# 'message'は_message.html.erbのこと %>
+  <%# コレクションでcontrollers/messages.controller.rbのindexで指定された@messagesが繰り返される %>
 </div>
 
 
